@@ -9,6 +9,7 @@ from gallery.forms import (
     CustomUserCreationForm,
     UserSearchForm,
     GenreSearchForm,
+    GallerySearchForm,
 )
 from gallery.models import ArtPiece, Genre, Gallery
 
@@ -127,3 +128,57 @@ class GenreDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Genre
     fields = "__all__"
     success_url = reverse_lazy("gallery:genre-list")
+
+
+class GalleryListView(LoginRequiredMixin, generic.ListView):
+    model = Gallery
+    context_object_name = "gallery_list"
+    template_name = "gallery/gallery_list.html"
+    paginate_by = 10
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(GalleryListView, self).get_context_data(**kwargs)
+
+        name = self.request.GET.get("name", "")
+
+        context["search_form"] = GallerySearchForm(
+            initial={
+                "name": name
+            }
+        )
+
+        return context
+
+    def get_queryset(self):
+        queryset = Gallery.objects.all()
+
+        form = GallerySearchForm(self.request.GET)
+
+        if form.is_valid():
+            return queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+
+        return queryset
+
+
+class GalleryCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Gallery
+    fields = "__all__"
+    success_url = reverse_lazy("gallery:gallery-list")
+
+
+class GalleryUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Gallery
+    fields = "__all__"
+    success_url = reverse_lazy("gallery:gallery-list")
+
+
+class GalleryDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Gallery
+    fields = "__all__"
+    success_url = reverse_lazy("gallery:gallery-list")
+
+
+class GalleryDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Gallery

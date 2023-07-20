@@ -9,7 +9,11 @@ from .views import (
     GenreCreateView,
     GenreDeleteView,
     GenreUpdateView,
-
+    GalleryListView,
+    GalleryCreateView,
+    GalleryUpdateView,
+    GalleryDeleteView,
+    GalleryDetailView,
 )
 
 
@@ -30,7 +34,11 @@ urlpatterns = [
         UserDeleteView.as_view(),
         name="user-delete",
     ),
-    path("users/<int:pk>/", UserDetailView.as_view(), name="user-detail"),
+    path(
+        "users/<int:pk>/",
+        UserDetailView.as_view(),
+        name="user-detail"
+    ),
 
     path(
         "genres/",
@@ -51,6 +59,32 @@ urlpatterns = [
         "genres/<int:pk>/delete/",
         GenreDeleteView.as_view(),
         name="genre-delete",
+    ),
+
+    path(
+        "galleries/",
+        GalleryListView.as_view(),
+        name="gallery-list",
+    ),
+    path(
+        "galleries/create/",
+        GalleryCreateView.as_view(),
+        name="gallery-create",
+    ),
+    path(
+        "galleries/<int:pk>/update/",
+        GalleryUpdateView.as_view(),
+        name="gallery-update"
+    ),
+    path(
+        "galleries/<int:pk>/delete/",
+        GalleryDeleteView.as_view(),
+        name="gallery-delete",
+    ),
+    path(
+        "galleries/<int:pk>/",
+        GalleryDetailView.as_view(),
+        name="gallery-detail"
     ),
 ]
 
