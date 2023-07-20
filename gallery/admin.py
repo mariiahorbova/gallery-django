@@ -21,5 +21,5 @@ class ArtPieceAdmin(admin.ModelAdmin):
 
 
 @admin.register(Genre)
-class GalleryAdmin(admin.ModelAdmin):
+class GenreAdmin(admin.ModelAdmin):
     pass
