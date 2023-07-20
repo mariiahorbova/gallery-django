@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "bootstrap4",
     "crispy_bootstrap4",
     "crispy_forms",
+    "cities_light",
 
     "gallery",
 ]
@@ -82,6 +83,8 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+AUTH_USER_MODEL = "gallery.User"
 
 LANGUAGE_CODE = "en-us"
 
