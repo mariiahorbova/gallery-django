@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
+from PIL import Image as Im
 
 
 class Gallery(models.Model):
@@ -38,7 +39,7 @@ class Genre(models.Model):
 class ArtPiece(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    picture = models.CharField(max_length=255)
+    picture = models.ImageField(upload_to="pictures")
     creation_date = models.DateField()
     author = models.ForeignKey(
         to=settings.AUTH_USER_MODEL,
@@ -64,6 +65,17 @@ class ArtPiece(models.Model):
 
     def __str__(self):
         return f"{self.title} ({self.author})"
+
+    def save(self):
+        super().save()
+        img = Im.open(self.picture.path)
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.picture.path)
+
+    def get_absolute_url(self):
+        return reverse("gallery:art-piece-detail", kwargs={"pk": self.pk})
 
 
 class User(AbstractUser):

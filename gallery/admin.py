@@ -9,7 +9,15 @@ class GalleryAdmin(admin.ModelAdmin):
 
 @admin.register(ArtPiece)
 class ArtPieceAdmin(admin.ModelAdmin):
-    pass
+    list_display = [
+            "title",
+            "picture",
+            "description",
+            "creation_date",
+            "author",
+            "genre",
+            "gallery"
+        ]
 
 
 @admin.register(Genre)

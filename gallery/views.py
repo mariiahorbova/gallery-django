@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views import generic
+from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from gallery.forms import (
@@ -10,6 +10,7 @@ from gallery.forms import (
     UserSearchForm,
     GenreSearchForm,
     GallerySearchForm,
+    ArtPieceUploadForm
 )
 from gallery.models import ArtPiece, Genre, Gallery
 
@@ -182,3 +183,38 @@ class GalleryDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class GalleryDetailView(LoginRequiredMixin, generic.DetailView):
     model = Gallery
+
+
+class ArtPieceListView(LoginRequiredMixin, generic.ListView):
+    model = ArtPiece
+    context_object_name = "art_piece_list"
+    template_name = "gallery/art_piece_list.html"
+    paginate_by = 6
+
+
+class ArtPieceCreateView(LoginRequiredMixin, View):
+    def get(self, request):
+        form = ArtPieceUploadForm()
+        return render(request, 'gallery/art_piece_upload.html', {'form': form})
+
+    def post(self, request):
+        form = ArtPieceUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('gallery:art-piece-list')
+        else:
+            return render(request, 'gallery/art_piece_upload.html', {'form': form})
+
+
+class ArtPieceDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = ArtPiece
+    fields = "__all__"
+    context_object_name = "art_piece"
+    template_name = "gallery/art_piece_confirm_delete.html"
+    success_url = reverse_lazy("gallery:art-piece-list")
+
+
+class ArtPieceDetailView(LoginRequiredMixin, generic.DetailView):
+    model = ArtPiece
+    context_object_name = "art_piece"
+    template_name = "gallery/art_piece_detail.html"

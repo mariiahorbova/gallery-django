@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
+from gallery.models import ArtPiece
+
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -70,3 +72,18 @@ class GallerySearchForm(forms.Form):
             }
         )
     )
+
+
+class ArtPieceUploadForm(forms.ModelForm):
+
+    class Meta:
+        model = ArtPiece
+        fields = [
+            "title",
+            "picture",
+            "description",
+            "creation_date",
+            "author",
+            "genre",
+            "gallery"
+        ]

@@ -14,6 +14,10 @@ from .views import (
     GalleryUpdateView,
     GalleryDeleteView,
     GalleryDetailView,
+    ArtPieceListView,
+    ArtPieceCreateView,
+    ArtPieceDeleteView,
+    ArtPieceDetailView
 )
 
 
@@ -86,7 +90,27 @@ urlpatterns = [
         GalleryDetailView.as_view(),
         name="gallery-detail"
     ),
-]
 
+    path(
+        "art-pieces/",
+        ArtPieceListView.as_view(),
+        name="art-piece-list",
+    ),
+    path(
+        "art-pieces/create/",
+        ArtPieceCreateView.as_view(),
+        name="art-piece-create",
+    ),
+    path(
+        "art-pieces/<int:pk>/delete/",
+        ArtPieceDeleteView.as_view(),
+        name="art-piece-delete",
+    ),
+    path(
+        "art-pieces/<int:pk>/",
+        ArtPieceDetailView.as_view(),
+        name="art-piece-detail"
+    ),
+]
 
 app_name = "gallery"
