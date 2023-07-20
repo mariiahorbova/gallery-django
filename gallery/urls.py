@@ -5,6 +5,10 @@ from .views import (
     UserCreateView,
     UserDeleteView,
     UserDetailView,
+    GenreListView,
+    GenreCreateView,
+    GenreDeleteView,
+    GenreUpdateView,
 
 )
 
@@ -27,6 +31,27 @@ urlpatterns = [
         name="user-delete",
     ),
     path("users/<int:pk>/", UserDetailView.as_view(), name="user-detail"),
+
+    path(
+        "genres/",
+        GenreListView.as_view(),
+        name="genre-list",
+    ),
+    path(
+        "genres/create/",
+        GenreCreateView.as_view(),
+        name="genre-create",
+    ),
+    path(
+        "genres/<int:pk>/update/",
+        GenreUpdateView.as_view(),
+        name="genre-update"
+    ),
+    path(
+        "genres/<int:pk>/delete/",
+        GenreDeleteView.as_view(),
+        name="genre-delete",
+    ),
 ]
 
 

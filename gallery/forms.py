@@ -31,3 +31,29 @@ class CustomUserCreationForm(UserCreationForm):
                     "type": "date"
                 }),
         }
+
+
+class GenreSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search by genre.."
+            }
+        )
+    )
+
+
+class UserSearchForm(forms.Form):
+    pseudonym = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search by username.."
+            }
+        )
+    )
