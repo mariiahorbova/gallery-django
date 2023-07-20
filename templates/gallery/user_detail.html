@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Username: {{ user.username }}
+    <a href="{% url 'gallery:user-delete' pk=user.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+  </h1>
+
+  <p><strong>First name:</strong> {{ user.first_name }}</p>
+  <p><strong>Last name:</strong> {{ user.last_name }}</p>
+  <p><strong>Is author:</strong> {{ user.is_author }}</p>
+
+  <div class="ml-3">
+    <h4>Art Pieces</h4>
+
+    {% for piece in user.art_pieces.all %}
+        <hr>
+        <p><strong>Title:</strong> {{ piece.title }}</p>
+        <p class="text-muted"><strong>Id:</strong> {{piece.id}}</p>
+
+    {% empty %}
+      <p>No art pieces!</p>
+    {% endfor %}
+  </div>
+{% endblock %}

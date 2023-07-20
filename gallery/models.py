@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
 
 
 class Gallery(models.Model):
@@ -20,9 +21,15 @@ class Gallery(models.Model):
         related_name="galleries"
     )
 
+    def __str__(self):
+        return f"{self.name} ({self.country})"
+
 
 class Genre(models.Model):
     name = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return str(self.name)
 
 
 class ArtPiece(models.Model):
@@ -52,6 +59,9 @@ class ArtPiece(models.Model):
         related_name="art_pieces"
     )
 
+    def __str__(self):
+        return f"{self.title} ({self.author})"
+
 
 class User(AbstractUser):
     pseudonym = models.CharField(max_length=255, unique=True)
@@ -69,3 +79,9 @@ class User(AbstractUser):
     class Meta:
         verbose_name = "user"
         verbose_name_plural = "users"
+
+    def __str__(self):
+        return f"{self.username} ({self.first_name} {self.last_name})"
+
+    def get_absolute_url(self):
+        return reverse("gallery:user-detail", kwargs={"pk": self.pk})
