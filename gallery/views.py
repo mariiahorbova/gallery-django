@@ -10,7 +10,8 @@ from gallery.forms import (
     UserSearchForm,
     GenreSearchForm,
     GallerySearchForm,
-    ArtPieceUploadForm
+    ArtPieceUploadForm,
+    ArtPieceUpdateForm
 )
 from gallery.models import ArtPiece, Genre, Gallery
 
@@ -204,6 +205,13 @@ class ArtPieceCreateView(LoginRequiredMixin, View):
             return redirect('gallery:art-piece-list')
         else:
             return render(request, 'gallery/art_piece_upload.html', {'form': form})
+
+
+class ArtPieceUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = ArtPiece
+    template_name = "gallery/art_piece_upload.html"
+    form_class = ArtPieceUpdateForm
+    success_url = reverse_lazy("gallery:gallery-list")
 
 
 class ArtPieceDeleteView(LoginRequiredMixin, generic.DeleteView):

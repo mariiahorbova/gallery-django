@@ -17,7 +17,8 @@ from .views import (
     ArtPieceListView,
     ArtPieceCreateView,
     ArtPieceDeleteView,
-    ArtPieceDetailView
+    ArtPieceDetailView,
+    ArtPieceUpdateView
 )
 
 
@@ -95,6 +96,12 @@ urlpatterns = [
         "art-pieces/",
         ArtPieceListView.as_view(),
         name="art-piece-list",
+    ),
+
+    path(
+        "art-pieces/<int:pk>/update/",
+        ArtPieceUpdateView.as_view(),
+        name="art-piece-update",
     ),
     path(
         "art-pieces/create/",

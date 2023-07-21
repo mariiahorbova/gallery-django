@@ -87,3 +87,9 @@ class ArtPieceUploadForm(forms.ModelForm):
             "genre",
             "gallery"
         ]
+
+
+class ArtPieceUpdateForm(ArtPieceUploadForm):
+
+    class Meta(ArtPieceUploadForm.Meta):
+        exclude = ["picture"]

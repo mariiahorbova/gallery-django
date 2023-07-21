@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Upload new art piece</h1>
+  <h1>{{ object|yesno:"Update,Upload" }} art piece</h1>
   <br>
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit"> Upload Image </button>
+        <button type="submit"> {{ object|yesno:"Update,Upload" }} Art piece </button>
     </form>
 {% endblock %}
