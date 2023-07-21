@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic, View
@@ -14,25 +13,6 @@ from gallery.forms import (
     ArtPieceUpdateForm
 )
 from gallery.models import ArtPiece, Genre, Gallery
-
-
-@login_required
-def index(request):
-    """View function for the home page of the site."""
-
-    num_authors = get_user_model().objects.count()
-    num_art_pieces = ArtPiece.objects.count()
-    num_genres = Genre.objects.count()
-    num_galleries = Gallery.objects.count()
-
-    context = {
-        "num_authors": num_authors,
-        "num_art_pieces": num_art_pieces,
-        "num_genres": num_genres,
-        "num_galleries": num_galleries
-    }
-
-    return render(request, "index.html", context=context)
 
 
 class UserListView(LoginRequiredMixin, generic.ListView):
