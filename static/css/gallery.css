@@ -24,7 +24,7 @@ h1{
   float:left;
 }
 img{
-  width: 100%;
+  width: 50%;
   transition-duration: .3s;
   max-width: 100%;
   display:block;
@@ -36,7 +36,6 @@ img{
   display:block;
   cursor:pointer;
   top: 35%;
-  display: none;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);

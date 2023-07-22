@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load crispy_forms_filters %}
+{% load widget_tweaks %}
 
 {% block content %}
 <link href="/static/css/gallery.css" rel="stylesheet">
@@ -9,11 +9,12 @@
       <a href="{% url 'gallery:user-create' %}" class="btn btn-outline-light text-dark btn-lg">
         Add user
       </a>
+    <div class="formbold-form-wrapper">
+        <form action="" method="get" class="form-inline">
+          {{ search_form.pseudonym|add_class:"formbold-form-input"}}
+        </form>
+    </div>
     </h1>
-    <form action="" method="get" class="form-inline">
-      {{ search_form|crispy }}
-      <input class="btn btn-secondary" type="submit" value="🔍">
-    </form>
 
     {% if user_list %}
     <table class="table">
@@ -31,7 +32,7 @@
     {% for custom_user in user_list %}
       <tr>
         <td>{{ custom_user.id }}</td>
-        <td><a href="{{ custom_user.get_absolute_url }}">{{ custom_user.username }}
+        <td><a href="{{ custom_user.get_absolute_url }}" class="outline-light text-dark">{{ custom_user.username }}
           {% if user == custom_user %} (Me)
           {% endif %}</a></td>
         <td>{{ custom_user.first_name }}</td>

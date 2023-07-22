@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load crispy_forms_filters %}
+{% load widget_tweaks %}
 
 {% block content %}
   <link href="/static/css/gallery.css" rel="stylesheet">
@@ -8,48 +8,52 @@
     <a href="{% url 'gallery:gallery-create' %}" class="btn btn-outline-light text-dark btn-lg">
       Add gallery
     </a>
+    <div class="formbold-form-wrapper">
+        <form action="" method="get" class="form-inline">
+          {{ search_form.name|add_class:"formbold-form-input"}}
+        </form>
+    </div>
   </h1>
-    <form action="" method="get" class="form-inline">
-      {{ search_form|crispy }}
-      <input class="btn btn-secondary" type="submit" value="🔍">
-    </form>
 
   {% if gallery_list %}
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Country</th>
-        <th>City</th>
-      </tr>
-
-      {% for gallery in gallery_list %}
+    <div class="tbl-header">
+      <table class="table" >
         <tr>
-          <td>
-              {{ gallery.id }}
-          </td>
-          <td><a href="{{ gallery.get_absolute_url }}">{{ gallery.name }}</a></td>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Country</th>
+          <th>City</th>
+          <th>Gallery controls</th>
+        </tr>
+        <tbody>
+        {% for gallery in gallery_list %}
+          <tr>
+            <td>
+                {{ gallery.id }}
+            </td>
+            <td><a href="{{ gallery.get_absolute_url }}" class="outline-light text-dark">{{ gallery.name }}</a></td>
 
-          <td>
-              {{ gallery.country }}
-          </td>
-          <td>
-              {{ gallery.city }}
-          </td>
-          <td>
-              <a href="{% url 'gallery:gallery-update' pk=gallery.id %}">
-                Update
-              </a>
+            <td>
+                {{ gallery.country }}
             </td>
             <td>
-              <a style="color: red"
-                href="{% url 'gallery:gallery-delete' pk=gallery.id %}">
-                Delete
-              </a>
+                {{ gallery.city }}
             </td>
-        </tr>
-      {% endfor %}
-    </table>
+            <td>
+                <a href="{% url 'gallery:gallery-update' pk=gallery.id %}" class="btn-outline-light text-dark btn-lg">
+                  Update
+                </a>
+              /
+                <a
+                  href="{% url 'gallery:gallery-delete' pk=gallery.id %}" class="btn-outline-danger text-dark btn-lg">
+                  Delete
+                </a>
+              </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
 
   {% else %}
     <div style="text-align: center;"><p>There are no galleries.</p></div>
