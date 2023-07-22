@@ -1,12 +1,59 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 
 {% block content %}
-  <h1>{{ object|yesno:"Update,Upload" }} art piece</h1>
-  <br>
-
-    <form method="POST" enctype="multipart/form-data">
+  <div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+      <h1>{{ object|yesno:"Update,Upload" }} an art piece</h1>
+      <br>
+      <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit"> {{ object|yesno:"Update,Upload" }} Art piece </button>
-    </form>
+
+        <div class="formbold-input-group">
+          <label for="title" class="formbold-form-label"> Title </label>
+          {{ form.title|add_class:"formbold-form-input" }}
+        </div>
+
+        <div>
+          <label for="description" class="formbold-form-label">
+            Description
+          </label>
+          {{ form.description|add_class:"formbold-form-input" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label for="title" class="formbold-form-label"> Art piece </label>
+          {{ form.picture }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label class="formbold-form-label">
+            Author
+          </label>
+          {{ form.author|add_class:"formbold-form-select" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label for="date" class="formbold-form-label"> Creation date </label>
+          {{ form.creation_date|add_class:"formbold-form-input" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label class="formbold-form-label">
+            Genre
+          </label>
+          {{ form.genre|add_class:"formbold-form-select" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label class="formbold-form-label">
+            Gallery
+          </label>
+          {{ form.gallery|add_class:"formbold-form-select" }}
+        </div>
+          <button class="formbold-btn" type="submit"> {{ object|yesno:"Update,Upload" }} an art piece </button>
+      </form>
+
+  </div>
+</div>
 {% endblock %}

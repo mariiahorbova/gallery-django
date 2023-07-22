@@ -1,12 +1,66 @@
 {% extends "base.html" %}
-{% load crispy_forms_filters %}
+{% load widget_tweaks %}
 
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} driver</h1>
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
+  <div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+      <h1>{{ object|yesno:"Update,Create" }} user</h1>
+      <br>
+      <form action="" method="post">
+        {% csrf_token %}
 
-    <input type="submit" value="Submit" class="btn btn-primary">
-  </form>
+        <div class="formbold-input-group">
+          <label for="username" class="formbold-form-label"> Username </label>
+          {{ form.username|add_class:"formbold-form-input" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label for="password1" class="formbold-form-label"> Password </label>
+          {{ form.password1|add_class:"formbold-form-input" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label for="password2" class="formbold-form-label"> Password confirmation </label>
+          {{ form.password2|add_class:"formbold-form-input" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label for="pseudonym" class="formbold-form-label"> Pseudonym </label>
+          {{ form.pseudonym|add_class:"formbold-form-input" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label for="first_name" class="formbold-form-label"> First name </label>
+          {{ form.first_name|add_class:"formbold-form-input" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label for="last_name" class="formbold-form-label"> Last name </label>
+          {{ form.last_name|add_class:"formbold-form-input" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label for="birth_date" class="formbold-form-label"> Birth date </label>
+          {{ form.birth_date|add_class:"formbold-form-input" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label for="death_date" class="formbold-form-label"> Death date </label>
+          {{ form.death_date|add_class:"formbold-form-input" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label class="formbold-form-label">
+            Country
+          </label>
+          {{ form.country|add_class:"formbold-form-select" }}
+        </div>
+          <label for="is_author">
+            Is author
+          </label>
+            {{ form.is_author }}
+          <button class="formbold-btn" type="submit"> {{ object|yesno:"Update,Create" }} user </button>
+      </form>
+  </div>
+</div>
 {% endblock %}

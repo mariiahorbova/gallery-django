@@ -3,7 +3,7 @@
 {% block content %}
   <h1>
     Gallery: {{ gallery.name }}
-    <a href="{% url 'gallery:gallery-delete' pk=gallery.id %}" class="btn btn-danger link-to-page">
+    <a href="{% url 'gallery:gallery-delete' pk=gallery.id %}" class="btn btn-outline-danger text-dark btn-lg">
       Delete
     </a>
   </h1>

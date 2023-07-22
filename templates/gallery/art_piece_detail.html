@@ -3,11 +3,11 @@
 {% block content %}
   <h1>
     Art piece: {{ art_piece.title }}
-    <a href="{% url 'gallery:art-piece-delete' pk=art_piece.id %}" class="btn btn-danger link-to-page">
-      Delete
-    </a>
-    <a href="{% url 'gallery:art-piece-update' pk=art_piece.id %}" class="btn btn-primary link-to-page">
+    <a href="{% url 'gallery:art-piece-update' pk=art_piece.id %}" class="btn btn-outline-secondary text-dark btn-lg">
       Update
+    </a>
+    <a href="{% url 'gallery:art-piece-delete' pk=art_piece.id %}" class="btn btn-outline-danger text-dark btn-lg">
+      Delete
     </a>
   </h1>
 

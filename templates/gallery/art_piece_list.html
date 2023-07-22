@@ -1,29 +1,29 @@
 {% extends "base.html" %}
-{% load crispy_forms_filters %}
 
 {% block content %}
+<link href="/static/css/gallery.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <h1>
-    Art piece List
-    <a href="{% url 'gallery:art-piece-create' %}" class="btn btn-primary link-to-page">
-      Create
+    Art pieces
+    <a href="{% url 'gallery:art-piece-create' %}" class="btn btn-outline-light text-dark btn-lg">
+      Add piece
     </a>
   </h1>
   <br>
   {% if art_piece_list %}
+    <div class="container-all">
     {% for art_piece in art_piece_list %}
-        <div class="col-md-4">
-          <div class="thumbnail">
-            <a href="{{ art_piece.get_absolute_url }}">
-              <img src="{{ art_piece.picture.url }}" alt="Picture" style="width:100%">
-              <div class="caption">
-                <p>{{ art_piece.title }}</p>
-              </div>
-            </a>
-          </div>
+        <div class="container">
+          <a href="{{ art_piece.get_absolute_url }}">
+          <img src="{{ art_piece.picture.url }}" alt="">
+           <span class="title">{{ art_piece.title }}</span>
+          <span class="text">{{ art_piece.author }}</span>
+          </a>
         </div>
     {% endfor %}
-
+    </div>
   {% else %}
-      <p>There are no art pieces.</p>
+      <div style="text-align: center;"><h2>There are no art pieces.</h2></div>
   {% endif %}
 {% endblock %}

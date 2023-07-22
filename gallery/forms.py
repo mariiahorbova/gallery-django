@@ -19,14 +19,12 @@ class CustomUserCreationForm(UserCreationForm):
         )
         widgets = {
             "birth_date": forms.DateInput(
-                format="%Y-%m-%d",
                 attrs={
                     "class": "form-control",
                     "placeholder": "Select a date",
                     "type": "date"
                 }),
             "death_date": forms.DateInput(
-                format="%Y-%m-%d",
                 attrs={
                     "class": "form-control",
                     "placeholder": "Select a date",
@@ -87,6 +85,14 @@ class ArtPieceUploadForm(forms.ModelForm):
             "genre",
             "gallery"
         ]
+        widgets = {
+            "creation_date": forms.DateInput(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Select a date",
+                    "type": "date"
+                }),
+        }
 
 
 class ArtPieceUpdateForm(ArtPieceUploadForm):

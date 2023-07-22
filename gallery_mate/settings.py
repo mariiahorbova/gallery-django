@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "crispy_forms",
     "cities_light",
+    "widget_tweaks",
 
     "gallery",
 ]
@@ -89,7 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/art-pieces/"
 
 AUTH_USER_MODEL = "gallery.User"
 

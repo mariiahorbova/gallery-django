@@ -1,23 +1,26 @@
 {% extends "base.html" %}
-{% load crispy_forms_filters %}
+{% load widget_tweaks %}
 
 {% block content %}
+  <link href="/static/css/gallery.css" rel="stylesheet">
   <h1>
-    Genre List
-    <a href="{% url 'gallery:genre-create' %}" class="btn btn-primary link-to-page">
-      Create
+    Genres
+    <a href="{% url 'gallery:genre-create' %}" class="btn btn-outline-light text-dark btn-lg">
+      Add genre
     </a>
+    <div class="formbold-form-wrapper">
+        <form action="" method="get" class="form-inline">
+          {{ search_form.name|add_class:"formbold-form-input"}}
+        </form>
+    </div>
   </h1>
-    <form action="" method="get" class="form-inline">
-      {{ search_form|crispy }}
-      <input class="btn btn-secondary" type="submit" value="🔍">
-    </form>
 
   {% if genre_list %}
     <table class="table">
       <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Genre controls</th>
       </tr>
 
       {% for genre in genre_list %}
@@ -29,13 +32,12 @@
               {{ genre.name }}
           </td>
           <td>
-              <a href="{% url 'gallery:genre-update' pk=genre.id %}">
+              <a href="{% url 'gallery:genre-update' pk=genre.id %}" class="btn-outline-light text-dark btn-lg">
                 Update
               </a>
-            </td>
-            <td>
-              <a style="color: red"
-                href="{% url 'gallery:genre-delete' pk=genre.id %}">
+            /
+              <a
+                href="{% url 'gallery:genre-delete' pk=genre.id %}" class="btn-outline-danger text-dark btn-lg">
                 Delete
               </a>
             </td>
@@ -44,6 +46,6 @@
     </table>
 
   {% else %}
-      <p>There are no genres in the service.</p>
+    <div style="text-align: center;"><p>There are no genres in the service.</p></div>
   {% endif %}
 {% endblock %}
