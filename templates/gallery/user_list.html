@@ -2,10 +2,12 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
+<link href="/static/css/gallery.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <h1>
-      User List
-      <a href="{% url 'gallery:user-create' %}" class="btn btn-primary link-to-page">
-        Create
+      Users
+      <a href="{% url 'gallery:user-create' %}" class="btn btn-outline-light text-dark btn-lg">
+        Add user
       </a>
     </h1>
     <form action="" method="get" class="form-inline">
@@ -44,6 +46,6 @@
 
     </table>
     {% else %}
-      <p>There are no users.</p>
+      <div style="text-align: center;"><p>There are no users.</p></div>
     {% endif %}
 {% endblock %}

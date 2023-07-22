@@ -2,10 +2,11 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
+  <link href="/static/css/gallery.css" rel="stylesheet">
   <h1>
-    Genre List
-    <a href="{% url 'gallery:genre-create' %}" class="btn btn-primary link-to-page">
-      Create
+    Genres
+    <a href="{% url 'gallery:genre-create' %}" class="btn btn-outline-light text-dark btn-lg">
+      Add genre
     </a>
   </h1>
     <form action="" method="get" class="form-inline">
@@ -44,6 +45,6 @@
     </table>
 
   {% else %}
-      <p>There are no genres in the service.</p>
+    <div style="text-align: center;"><p>There are no genres in the service.</p></div>
   {% endif %}
 {% endblock %}

@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "crispy_forms",
     "cities_light",
+    "widget_tweaks",
 
     "gallery",
 ]

@@ -2,10 +2,11 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
+  <link href="/static/css/gallery.css" rel="stylesheet">
   <h1>
-    Gallery List
-    <a href="{% url 'gallery:gallery-create' %}" class="btn btn-primary link-to-page">
-      Create
+    Galleries
+    <a href="{% url 'gallery:gallery-create' %}" class="btn btn-outline-light text-dark btn-lg">
+      Add gallery
     </a>
   </h1>
     <form action="" method="get" class="form-inline">
@@ -51,6 +52,6 @@
     </table>
 
   {% else %}
-      <p>There are no galleries.</p>
+    <div style="text-align: center;"><p>There are no galleries.</p></div>
   {% endif %}
 {% endblock %}

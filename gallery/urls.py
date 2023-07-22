@@ -1,4 +1,6 @@
-from django.urls import path
+from django.urls import path, reverse_lazy
+from django.views.generic import RedirectView
+
 from .views import (
     UserListView,
     UserCreateView,
@@ -22,6 +24,12 @@ from .views import (
 
 
 urlpatterns = [
+    path(
+        "",
+        RedirectView.as_view(
+            url=reverse_lazy("gallery:art-piece-list")
+        )
+    ),
     path(
         "users/",
         UserListView.as_view(),

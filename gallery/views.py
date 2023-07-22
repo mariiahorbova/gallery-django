@@ -176,15 +176,15 @@ class ArtPieceListView(LoginRequiredMixin, generic.ListView):
 class ArtPieceCreateView(LoginRequiredMixin, View):
     def get(self, request):
         form = ArtPieceUploadForm()
-        return render(request, 'gallery/art_piece_upload.html', {'form': form})
+        return render(request, "gallery/art_piece_upload.html", {"form": form})
 
     def post(self, request):
         form = ArtPieceUploadForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('gallery:art-piece-list')
+            return redirect("gallery:art-piece-list")
         else:
-            return render(request, 'gallery/art_piece_upload.html', {'form': form})
+            return render(request, "gallery/art_piece_upload.html", {"form": form})
 
 
 class ArtPieceUpdateView(LoginRequiredMixin, generic.UpdateView):
