@@ -24,11 +24,11 @@ class UserListView(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(UserListView, self).get_context_data(**kwargs)
 
-        pseudonym = self.request.GET.get("pseudonym", "")
+        username = self.request.GET.get("username", "")
 
         context["search_form"] = UserSearchForm(
             initial={
-                "pseudonym": pseudonym
+                "username": username
             }
         )
 
@@ -41,7 +41,7 @@ class UserListView(LoginRequiredMixin, generic.ListView):
 
         if form.is_valid():
             return queryset.filter(
-                pseudonym__icontains=form.cleaned_data["pseudonym"]
+                username__icontains=form.cleaned_data["username"]
             )
 
         return queryset
