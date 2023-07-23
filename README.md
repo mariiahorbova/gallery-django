@@ -24,7 +24,7 @@ git clone https://github.com/mariiahorbova/gallery-mate.git
 cd gallery-mate
 ```
 
-​## Accessing the Application
+## Accessing the Application
 ​
 * The Django application is accessible at `http://localhost:8000/`
 
