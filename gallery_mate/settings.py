@@ -9,7 +9,9 @@ SECRET_KEY = config("SECRET_KEY", default="VerySecretKey", cast=str)
 
 DEBUG = config("DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+]
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -90,7 +92,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_REDIRECT_URL = "/art-pieces/"
+LOGIN_REDIRECT_URL = "/"
 
 AUTH_USER_MODEL = "gallery.User"
 

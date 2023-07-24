@@ -1,8 +1,8 @@
+from PIL import Image as Im
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
-from PIL import Image as Im
 
 
 class Gallery(models.Model):
@@ -28,12 +28,18 @@ class Gallery(models.Model):
     def get_absolute_url(self):
         return reverse("gallery:gallery-detail", kwargs={"pk": self.pk})
 
+    class Meta:
+        ordering = ["name"]
+
 
 class Genre(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
     def __str__(self):
         return str(self.name)
+
+    class Meta:
+        ordering = ["name"]
 
 
 class ArtPiece(models.Model):
@@ -77,6 +83,9 @@ class ArtPiece(models.Model):
     def get_absolute_url(self):
         return reverse("gallery:art-piece-detail", kwargs={"pk": self.pk})
 
+    class Meta:
+        ordering = ["title"]
+
 
 class User(AbstractUser):
     pseudonym = models.CharField(max_length=255, unique=True)
@@ -91,12 +100,13 @@ class User(AbstractUser):
     )
     is_author = models.BooleanField(default=False)
 
-    class Meta:
-        verbose_name = "user"
-        verbose_name_plural = "users"
-
     def __str__(self):
         return f"{self.username} ({self.first_name} {self.last_name})"
 
     def get_absolute_url(self):
         return reverse("gallery:user-detail", kwargs={"pk": self.pk})
+
+    class Meta:
+        verbose_name = "user"
+        verbose_name_plural = "users"
+        ordering = ["username"]
