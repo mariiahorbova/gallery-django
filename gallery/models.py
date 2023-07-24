@@ -101,7 +101,11 @@ class User(AbstractUser):
     is_author = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.username} ({self.first_name} {self.last_name})"
+        user_string = f"{self.username}"
+        if self.first_name and self.last_name:
+            user_string += f"({self.first_name} {self.last_name})"
+
+        return user_string
 
     def get_absolute_url(self):
         return reverse("gallery:user-detail", kwargs={"pk": self.pk})
