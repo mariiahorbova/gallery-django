@@ -1,4 +1,4 @@
-![project_logo](https://github.com/mariiahorbova/gallery-mate/blob/main/gallery_1375157.png?raw=true){:height="100px" width="100px"}
+<img src="gallery_1375157.png" alt="drawing" width="100" height="100"/>
 
 # Gallery Project for Mate Academy
 Simple CRUD application for managing art pieces and authors.
