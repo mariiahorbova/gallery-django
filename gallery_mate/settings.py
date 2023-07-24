@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from decouple import config
@@ -8,7 +9,9 @@ SECRET_KEY = config("SECRET_KEY", default="VerySecretKey", cast=str)
 
 DEBUG = config("DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+]
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -26,6 +29,8 @@ INSTALLED_APPS = [
     "bootstrap4",
     "crispy_bootstrap4",
     "crispy_forms",
+    "cities_light",
+    "widget_tweaks",
 
     "gallery",
 ]
@@ -59,6 +64,10 @@ TEMPLATES = [
     },
 ]
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
 WSGI_APPLICATION = "gallery_mate.wsgi.application"
 
 DATABASES = {
@@ -83,6 +92,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_REDIRECT_URL = "/"
+
+AUTH_USER_MODEL = "gallery.User"
+
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
@@ -92,5 +105,13 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+
+STATICFILES_DIRS = (BASE_DIR / "static",)
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

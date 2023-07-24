@@ -1,0 +1,15 @@
+<link href="/static/css/navbar.css" rel="stylesheet" />
+<nav>
+  <ul>
+  {% if user.is_authenticated %}
+    <li><a href="{{ user.get_absolute_url }}">{{ user.username }}</a></li>
+    <li><a href="{% url 'gallery:user-list' %}" data-hover="Users">Users</a></li>
+    <li><a href="{% url 'gallery:genre-list' %}" data-hover="Genres">Genres</a></li>
+    <li><a href="{% url 'gallery:gallery-list' %}" data-hover="Galleries">Galleries</a></li>
+    <li><a href="{% url 'gallery:art-piece-list' %}" data-hover="Art pieces">Art pieces</a></li>
+    <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+  {% else %}
+    <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+  {% endif %}
+</ul>
+</nav>

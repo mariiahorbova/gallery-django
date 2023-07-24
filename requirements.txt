@@ -8,3 +8,6 @@ django-crispy-forms==1.14.0
 python-decouple==3.8
 crispy_bootstrap4==2022.1
 django-bootstrap4
+django-cities-light==3.9.2
+Pillow==10.0.0
+django-widget-tweaks==1.4.12

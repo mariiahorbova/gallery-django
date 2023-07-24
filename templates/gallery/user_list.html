@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<link href="/static/css/gallery.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1>
+      Users
+      <a href="{% url 'gallery:user-create' %}" class="btn btn-outline-light text-dark btn-lg">
+        Add user
+      </a>
+    <div class="formbold-form-wrapper">
+        <form action="" method="get" class="form-inline">
+          {{ search_form.username|add_class:"formbold-form-input"}}
+        </form>
+    </div>
+    </h1>
+
+    {% if user_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Pseudonym</th>
+        <th>Birth date</th>
+        <th>Death date</th>
+        <th>Country</th>
+
+      </tr>
+    {% for custom_user in user_list %}
+      <tr>
+        <td>{{ custom_user.id }}</td>
+        <td><a href="{{ custom_user.get_absolute_url }}" class="outline-light text-dark">{{ custom_user.username }}
+          {% if user == custom_user %} (Me)
+          {% endif %}</a></td>
+        <td>{{ custom_user.first_name }}</td>
+        <td>{{ custom_user.last_name }}</td>
+        <td>{{ custom_user.pseudonym }}</td>
+        <td>{{ custom_user.birth_date }}</td>
+        <td>{{ custom_user.death_date }}</td>
+        <td>{{ custom_user.country }}</td>
+
+      </tr>
+    {% endfor %}
+
+    </table>
+    {% else %}
+      <div style="text-align: center;"><p>There are no users.</p></div>
+    {% endif %}
+{% endblock %}

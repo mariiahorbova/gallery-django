@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <link href="/static/css/gallery.css" rel="stylesheet">
+  <h1>
+    Genres
+    <a href="{% url 'gallery:genre-create' %}" class="btn btn-outline-light text-dark btn-lg">
+      Add genre
+    </a>
+    <div class="formbold-form-wrapper">
+        <form action="" method="get" class="form-inline">
+          {{ search_form.name|add_class:"formbold-form-input"}}
+        </form>
+    </div>
+  </h1>
+
+  {% if genre_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Genre controls</th>
+      </tr>
+
+      {% for genre in genre_list %}
+        <tr>
+          <td>
+              {{ genre.id }}
+          </td>
+          <td>
+              {{ genre.name }}
+          </td>
+          <td>
+              <a href="{% url 'gallery:genre-update' pk=genre.id %}" class="btn-outline-light text-dark btn-lg">
+                Update
+              </a>
+            /
+              <a
+                href="{% url 'gallery:genre-delete' pk=genre.id %}" class="btn-outline-danger text-dark btn-lg">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+    <div style="text-align: center;"><p>There are no genres in the service.</p></div>
+  {% endif %}
+{% endblock %}

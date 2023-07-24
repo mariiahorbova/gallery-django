@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <link href="/static/css/gallery.css" rel="stylesheet">
+  <h1>
+    Username: {{ user.username }}
+    <a href="{% url 'gallery:user-delete' pk=user.id %}" class="btn btn-outline-danger text-dark btn-lg">
+      Delete
+    </a>
+  </h1>
+
+  <p>First name: {{ user.first_name }}</p>
+  <p>Last name: {{ user.last_name }}</p>
+  {% if user.is_author %}
+    <p>Is author: Yes</p>
+  {% else %}
+    <p>Is author: No</p>
+  {% endif %}
+
+  <div class="ml-3">
+    <h4>Art Pieces</h4>
+
+    {% for piece in user.art_pieces.all %}
+        <hr>
+        <p>Title: {{ piece.title }}</p>
+        <p class="text-muted"><strong>Id:</strong> {{piece.id}}</p>
+        <img src="{{ piece.picture.url }}" alt="">
+
+    {% empty %}
+      <p>No art pieces!</p>
+    {% endfor %}
+  </div>
+{% endblock %}

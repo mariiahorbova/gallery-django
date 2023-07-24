@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+      <h1>{{ object|yesno:"Update,Create" }} gallery</h1>
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="formbold-input-group">
+          <label for="name" class="formbold-form-label"> Name </label>
+          {{ form.name|add_class:"formbold-form-input" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label class="formbold-form-label">
+            Country
+          </label>
+          {{ form.country|add_class:"formbold-form-select" }}
+        </div>
+
+        <div class="formbold-input-group">
+          <label class="formbold-form-label">
+            City
+          </label>
+          {{ form.city|add_class:"formbold-form-select" }}
+        </div>
+
+        <input type="submit" value="Submit" class="formbold-btn">
+      </form>
+    </div>
+  </div>
+{% endblock %}

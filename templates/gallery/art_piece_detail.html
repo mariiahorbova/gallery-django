@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Art piece: {{ art_piece.title }}
+    <a href="{% url 'gallery:art-piece-update' pk=art_piece.id %}" class="btn btn-outline-secondary text-dark btn-lg">
+      Update
+    </a>
+    <a href="{% url 'gallery:art-piece-delete' pk=art_piece.id %}" class="btn btn-outline-danger text-dark btn-lg">
+      Delete
+    </a>
+  </h1>
+
+  <img src="{{ art_piece.picture.url }}" style="width:50%">
+  <p><strong>Description:</strong> {{ art_piece.description }}</p>
+  <p><strong>Author:</strong> {{ art_piece.author }}</p>
+  <p><strong>Genre:</strong> {{ art_piece.genre }}</p>
+  <p><strong>Gallery:</strong> {{ art_piece.gallery }}</p>
+
+{% endblock %}
