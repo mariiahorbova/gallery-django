@@ -1,17 +1,13 @@
 # Gallery Project for Mate Academy
+Simple CRUD application for managing art pieces and authors.
 
-## Gallery
-Simple CRUD application
+
 ​
+### Entities:
 1. User
 2. Genre
 3. ArtPiece
 4. Gallery
-   
-## Technologies
-
-- [Django Official Documentation](https://docs.djangoproject.com/)
-Django is a high-level Python Web framework. In this project, it's used to create the backend service. This service builds the Django application and exposes it on port 8080.
 
 ## Setup
 ​
@@ -23,11 +19,32 @@ git clone https://github.com/mariiahorbova/gallery-mate.git
 ```
 cd gallery-mate
 ```
+3. Create .env file in gallery-mate directory and populate it with variables (see .env.example)
+4. Create virtual environment and activate it
+```
+python3 -m venv venv
+source venv/bin/activate
+```
+5. Install dependencies
+```
+pip install -r requirements.txt
+```
+6. Apply migrations to the project
+```
+python manage.py migrate
+```
+7. Create superuser to login
+```
+python manage.py createsuperuser
+```
+8. Start server
+```
+python manage.py runserver
+```
 
 ## Accessing the Application
 ​
 * The Django application is accessible at `http://localhost:8000/`
 
 ​Remember to replace `localhost` with the relevant IP address if you're not accessing these from the same machine where the services are running.
-​
-Please make sure to replace placeholders with your actual values in the `.env` file. Also, these instructions are subject to changes in the project, so always refer to the project's README or other documentation for the most accurate information.
+
