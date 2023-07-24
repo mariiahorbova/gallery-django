@@ -1,8 +1,8 @@
+![Logo of the project](https://raw.githubusercontent.com/mariiahorbova/gallery-mate/master/gallery-1375157.png)
+
 # Gallery Project for Mate Academy
 Simple CRUD application for managing art pieces and authors.
 
-
-​
 ### Entities:
 1. User
 2. Genre
