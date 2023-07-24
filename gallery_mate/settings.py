@@ -15,6 +15,7 @@ DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
+    "gallery-mate.onrender.com"
 ]
 
 INTERNAL_IPS = [
