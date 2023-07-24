@@ -4,10 +4,14 @@
 {% block content %}
   <link href="/static/css/gallery.css" rel="stylesheet">
   <h1>
-    Username: {{ user.username }}
+    Username: {{ request.user.username }}
+    <a href="{% url 'gallery:user-update' pk=user.id %}" class="btn btn-outline-light text-dark btn-lg">
+      Update
+    </a>
     <a href="{% url 'gallery:user-delete' pk=user.id %}" class="btn btn-outline-danger text-dark btn-lg">
       Delete
     </a>
+
   </h1>
 
   <p>First name: {{ user.first_name }}</p>
@@ -25,7 +29,7 @@
         <hr>
         <p>Title: {{ piece.title }}</p>
         <p class="text-muted"><strong>Id:</strong> {{piece.id}}</p>
-        <img src="{{ piece.picture.url }}" alt="">
+        <a href="{% url 'gallery:art-piece-detail' pk=piece.id %}"><img src="{{ piece.picture.url }}" alt=""></a>
 
     {% empty %}
       <p>No art pieces!</p>
