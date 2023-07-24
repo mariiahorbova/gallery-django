@@ -2,12 +2,16 @@ import os
 from pathlib import Path
 
 from decouple import config
+import dj_database_url
+import dotenv
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = config("SECRET_KEY", default="VerySecretKey", cast=str)
 
-DEBUG = config("DEBUG", default=True, cast=bool)
+DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -76,6 +80,13 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+db_from_env = dj_database_url.config(
+    default=config("DATABASE_URL"),
+    conn_max_age=500
+)
+
+DATABASES["default"].update(db_from_env)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
