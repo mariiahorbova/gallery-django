@@ -4,7 +4,6 @@ from django.views.generic import RedirectView
 from .views import (
     UserListView,
     UserCreateView,
-    UserUpdateView,
     UserDeleteView,
     UserDetailView,
     GenreListView,
@@ -40,11 +39,6 @@ urlpatterns = [
         "users/create/",
         UserCreateView.as_view(),
         name="user-create",
-    ),
-    path(
-        "users/<int:pk>/update/",
-        UserUpdateView.as_view(),
-        name="user-update",
     ),
     path(
         "users/<int:pk>/delete/",

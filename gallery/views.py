@@ -57,12 +57,6 @@ class UserCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("gallery:user-list")
 
 
-class UserUpdateView(LoginRequiredMixin, generic.UpdateView):
-    model = get_user_model()
-    fields = "__all__"
-    success_url = reverse_lazy("gallery:user-list")
-
-
 class UserDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = get_user_model()
     success_url = reverse_lazy("gallery:user-list")
