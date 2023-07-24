@@ -1,7 +1,11 @@
-![project_logo](https://github.com/mariiahorbova/gallery-mate/blob/main/gallery_1375157.png?raw=true)
+<img src="gallery_1375157.png" alt="drawing" width="100" height="100"/>
 
 # Gallery Project for Mate Academy
 Simple CRUD application for managing art pieces and authors.
+
+## Check it out
+(ㅅ´ ˘ `) ✧
+https://gallery-mate.onrender.com
 
 ### Entities:
 1. User
@@ -47,4 +51,9 @@ python manage.py runserver
 * The Django application is accessible at `http://localhost:8000/`
 
 ​Remember to replace `localhost` with the relevant IP address if you're not accessing these from the same machine where the services are running.
+
+![gallery drawio](https://github.com/mariiahorbova/gallery-mate/assets/44654425/cd0df434-9f7b-4b6b-a73b-57b9d61c97cc)
+
+![image](https://github.com/mariiahorbova/gallery-mate/assets/44654425/9768e15c-7221-4d99-8c3c-ca46fdf693ec)
+
 
