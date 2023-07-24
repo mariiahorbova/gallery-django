@@ -1,4 +1,4 @@
-![Logo of the project]([https://raw.githubusercontent.com/mariiahorbova/gallery-mate/master/gallery-1375157.png](https://github.com/mariiahorbova/gallery-mate/blob/95bced1cb1087b0def48f0fbacaafa5ba3e93e6f/gallery_1375157.png))
+![project_logo](https://github.com/mariiahorbova/gallery-mate/blob/main/gallery_1375157.png?raw=true)
 
 # Gallery Project for Mate Academy
 Simple CRUD application for managing art pieces and authors.
