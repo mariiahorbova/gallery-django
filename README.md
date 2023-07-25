@@ -5,6 +5,8 @@ Simple CRUD application for managing art pieces and authors.
 
 ## Check it out
 (ㅅ´ ˘ `) ✧ Project deployed [here](https://gallery-mate.onrender.com)
+username: admin.user
+password: qwfpgj78
 
 ### Entities:
 1. User
@@ -63,4 +65,5 @@ python manage.py runserver
 
 ![image](https://github.com/mariiahorbova/gallery-mate/assets/44654425/9768e15c-7221-4d99-8c3c-ca46fdf693ec)
 
+![image](https://github.com/mariiahorbova/gallery-mate/assets/44654425/1de72966-5835-414a-9b55-3d4fb034d978)
 
