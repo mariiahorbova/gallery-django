@@ -3,17 +3,15 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
+from django_countries.fields import CountryField
 
 
 class Gallery(models.Model):
     name = models.CharField(max_length=255)
-    country = models.ForeignKey(
-        "cities_light.Country",
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="galleries"
-    )
+    country = CountryField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["name"]
 
     def __str__(self):
         return f"{self.name} ({self.country})"
@@ -21,18 +19,15 @@ class Gallery(models.Model):
     def get_absolute_url(self):
         return reverse("gallery:gallery-detail", kwargs={"pk": self.pk})
 
-    class Meta:
-        ordering = ["name"]
-
 
 class Genre(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
-    def __str__(self):
-        return str(self.name)
-
     class Meta:
         ordering = ["name"]
+
+    def __str__(self):
+        return str(self.name)
 
 
 class ArtPiece(models.Model):
@@ -62,6 +57,9 @@ class ArtPiece(models.Model):
         related_name="art_pieces"
     )
 
+    class Meta:
+        ordering = ["title"]
+
     def __str__(self):
         return f"{self.title} ({self.author})"
 
@@ -76,22 +74,18 @@ class ArtPiece(models.Model):
     def get_absolute_url(self):
         return reverse("gallery:art-piece-detail", kwargs={"pk": self.pk})
 
-    class Meta:
-        ordering = ["title"]
-
 
 class User(AbstractUser):
     pseudonym = models.CharField(max_length=255, unique=True)
     birth_date = models.DateField(null=True, blank=True)
     death_date = models.DateField(null=True, blank=True)
-    country = models.ForeignKey(
-        "cities_light.Country",
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="users"
-    )
+    country = CountryField(null=True, blank=True)
     is_author = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = "user"
+        verbose_name_plural = "users"
+        ordering = ["username"]
 
     def __str__(self):
         user_string = f"{self.username}"
@@ -102,8 +96,3 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse("gallery:user-detail", kwargs={"pk": self.pk})
-
-    class Meta:
-        verbose_name = "user"
-        verbose_name_plural = "users"
-        ordering = ["username"]

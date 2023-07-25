@@ -170,7 +170,7 @@ class ArtPieceListView(LoginRequiredMixin, generic.ListView):
     model = ArtPiece
     context_object_name = "art_piece_list"
     template_name = "gallery/art_piece_list.html"
-    paginate_by = 6
+    paginate_by = 10
 
 
 class ArtPieceCreateView(LoginRequiredMixin, View):

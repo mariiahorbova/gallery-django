@@ -2,18 +2,18 @@
 {% load widget_tweaks %}
 
 {% block content %}
-  <link href="/static/css/gallery.css" rel="stylesheet">
+  <link href="/css/gallery.css" rel="stylesheet">
   <h1>
     Galleries
     <a href="{% url 'gallery:gallery-create' %}" class="btn btn-outline-light text-dark btn-lg">
       Add gallery
     </a>
-    <div class="formbold-form-wrapper">
+  </h1>
+  <div class="formbold-form-wrapper">
         <form action="" method="get" class="form-inline">
           {{ search_form.name|add_class:"formbold-form-input"}}
         </form>
-    </div>
-  </h1>
+  </div>
 
   {% if gallery_list %}
     <div class="tbl-header">
@@ -22,7 +22,6 @@
           <th>ID</th>
           <th>Name</th>
           <th>Country</th>
-          <th>City</th>
           <th>Gallery controls</th>
         </tr>
         <tbody>
@@ -34,10 +33,7 @@
             <td><a href="{{ gallery.get_absolute_url }}" class="outline-light text-dark">{{ gallery.name }}</a></td>
 
             <td>
-                {{ gallery.country }}
-            </td>
-            <td>
-                {{ gallery.city }}
+                {{ gallery.country.name }}
             </td>
             <td>
                 <a href="{% url 'gallery:gallery-update' pk=gallery.id %}" class="btn-outline-light text-dark btn-lg">

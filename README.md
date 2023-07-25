@@ -4,8 +4,7 @@
 Simple CRUD application for managing art pieces and authors.
 
 ## Check it out
-(ㅅ´ ˘ `) ✧
-https://gallery-mate.onrender.com
+(ㅅ´ ˘ `) ✧ Project deployed [here](https://gallery-mate.onrender.com)
 
 ### Entities:
 1. User
@@ -14,7 +13,6 @@ https://gallery-mate.onrender.com
 4. Gallery
 
 ## Setup
-​
 1. Clone the project:
 ```
 git clone https://github.com/mariiahorbova/gallery-mate.git
@@ -24,11 +22,21 @@ git clone https://github.com/mariiahorbova/gallery-mate.git
 cd gallery-mate
 ```
 3. Create .env file in gallery-mate directory and populate it with variables (see .env.example)
-4. Create virtual environment and activate it
+4. Create virtual environment
 ```
 python3 -m venv venv
-source venv/bin/activate
 ```
+5. Activate virtual environment according to your OS
+
+| Platform   | Shell      | Command to activate virtual environment           |
+|:-----------|:-----------|:--------------------------------------------------|
+| POSIX      | bash/zsh   | ```$ source <path_to_venv>/bin/activate```        |
+| POSIX      | fish       | ```$ source <path_to_venv>/bin/activate.fish```   |
+| POSIX      | csh/tcsh   | ```$ source <path_to_venv>/bin/activate.csh```    |
+| POSIX      | PowerShell | ```$ <path_to_venv>/bin/Activate.ps1```           |
+| Windows    | cmd.exe    | ```C:\> <path_to_venv>\Scripts\activate.bat```    |
+| Windows    | PowerShell | ```PS C:\> <path_to_venv>\Scripts\Activate.ps1``` |
+
 5. Install dependencies
 ```
 pip install -r requirements.txt
@@ -47,12 +55,9 @@ python manage.py runserver
 ```
 
 ## Accessing the Application
-​
 * The Django application is accessible at `http://localhost:8000/`
 
 ​Remember to replace `localhost` with the relevant IP address if you're not accessing these from the same machine where the services are running.
-
-![gallery drawio](https://github.com/mariiahorbova/gallery-mate/assets/44654425/cd0df434-9f7b-4b6b-a73b-57b9d61c97cc)
 
 ![image](https://github.com/mariiahorbova/gallery-mate/assets/44654425/9768e15c-7221-4d99-8c3c-ca46fdf693ec)
 

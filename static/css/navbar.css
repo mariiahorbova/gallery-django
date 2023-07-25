@@ -17,6 +17,7 @@ nav ul {
 
 nav ul li {
   display: inline-block;
+  color: rgba(0, 35, 122, 0.5);
 }
 
 nav ul li a {
@@ -25,9 +26,11 @@ nav ul li a {
   font-size: 18px;
   text-decoration: none;
   display: block;
+  color: rgba(0, 35, 122, 0.5);
 }
 
 nav ul li a:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
   background: rgba(255, 255, 255, 0.1);
+  color: rgba(6, 32, 101, 0.5);
 }

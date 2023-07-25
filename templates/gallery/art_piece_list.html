@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<link href="/static/css/gallery.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/gallery.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <h1>
@@ -12,17 +12,18 @@
   </h1>
   <br>
   {% if art_piece_list %}
-    <div class="container-all">
+    <ul class="grid">
     {% for art_piece in art_piece_list %}
-        <div class="container">
+      <li>
+        <figure class="grid__figure">
           <a href="{{ art_piece.get_absolute_url }}">
           <img src="{{ art_piece.picture.url }}" alt="">
-           <span class="title">{{ art_piece.title }}</span>
-          <span class="text">{{ art_piece.author }}</span>
           </a>
-        </div>
+          <figcaption>{{ art_piece.title }}</figcaption>
+        </figure>
+      </li>
     {% endfor %}
-    </div>
+    </ul>
   {% else %}
       <div style="text-align: center;"><h2>There are no art pieces.</h2></div>
   {% endif %}

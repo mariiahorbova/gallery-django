@@ -2,18 +2,19 @@
 {% load widget_tweaks %}
 
 {% block content %}
-  <link href="/static/css/gallery.css" rel="stylesheet">
+  <link href="/css/gallery.css" rel="stylesheet">
   <h1>
     Genres
     <a href="{% url 'gallery:genre-create' %}" class="btn btn-outline-light text-dark btn-lg">
       Add genre
     </a>
-    <div class="formbold-form-wrapper">
+
+  </h1>
+  <div class="formbold-form-wrapper">
         <form action="" method="get" class="form-inline">
           {{ search_form.name|add_class:"formbold-form-input"}}
         </form>
-    </div>
-  </h1>
+  </div>
 
   {% if genre_list %}
     <table class="table">

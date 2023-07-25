@@ -2,7 +2,7 @@
 
 
 {% block content %}
-  <link href="/static/css/gallery.css" rel="stylesheet">
+  <link href="/css/gallery.css" rel="stylesheet">
   <h1>
     Username: {{ request.user.username }}
     <a href="{% url 'gallery:user-delete' pk=user.id %}" class="btn btn-outline-danger text-dark btn-lg">

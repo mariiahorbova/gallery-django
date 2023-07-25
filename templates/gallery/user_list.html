@@ -2,19 +2,19 @@
 {% load widget_tweaks %}
 
 {% block content %}
-<link href="/static/css/gallery.css" rel="stylesheet">
+<link href="/css/gallery.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <h1>
       Users
       <a href="{% url 'gallery:user-create' %}" class="btn btn-outline-light text-dark btn-lg">
         Add user
       </a>
+    </h1>
     <div class="formbold-form-wrapper">
         <form action="" method="get" class="form-inline">
           {{ search_form.username|add_class:"formbold-form-input"}}
         </form>
     </div>
-    </h1>
 
     {% if user_list %}
     <table class="table">
@@ -40,7 +40,7 @@
         <td>{{ custom_user.pseudonym }}</td>
         <td>{{ custom_user.birth_date }}</td>
         <td>{{ custom_user.death_date }}</td>
-        <td>{{ custom_user.country }}</td>
+        <td>{{ custom_user.country.name }}</td>
 
       </tr>
     {% endfor %}
