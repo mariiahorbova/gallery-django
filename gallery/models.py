@@ -14,13 +14,6 @@ class Gallery(models.Model):
         blank=True,
         related_name="galleries"
     )
-    city = models.ForeignKey(
-        "cities_light.City",
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="galleries"
-    )
 
     def __str__(self):
         return f"{self.name} ({self.country})"

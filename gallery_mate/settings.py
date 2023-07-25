@@ -7,16 +7,13 @@ import dotenv
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(os.path.join(BASE_DIR, '.env'))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 SECRET_KEY = config("SECRET_KEY", default="VerySecretKey", cast=str)
 
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "gallery-mate.onrender.com"
-]
+ALLOWED_HOSTS = ["127.0.0.1", "gallery-mate.onrender.com"]
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -29,14 +26,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "debug_toolbar",
     "bootstrap4",
     "crispy_bootstrap4",
     "crispy_forms",
     "cities_light",
     "widget_tweaks",
-
     "gallery",
 ]
 
