@@ -30,13 +30,13 @@ INSTALLED_APPS = [
     "bootstrap4",
     "crispy_bootstrap4",
     "crispy_forms",
-    "cities_light",
     "widget_tweaks",
     "gallery",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
