@@ -59,6 +59,8 @@ python manage.py runserver
 
 ​Remember to replace `localhost` with the relevant IP address if you're not accessing these from the same machine where the services are running.
 
+![gallery drawio](https://github.com/mariiahorbova/gallery-mate/assets/44654425/798a027d-8a11-445d-8bef-d3d6e0de8929)
+
 ![image](https://github.com/mariiahorbova/gallery-mate/assets/44654425/9768e15c-7221-4d99-8c3c-ca46fdf693ec)
 
 
