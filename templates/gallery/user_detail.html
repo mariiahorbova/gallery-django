@@ -25,7 +25,6 @@
     {% for piece in user.art_pieces.all %}
         <hr>
         <p>Title: {{ piece.title }}</p>
-        <p class="text-muted"><strong>Id:</strong> {{piece.id}}</p>
         <a href="{% url 'gallery:art-piece-detail' pk=piece.id %}"><img src="{{ piece.picture.url }}" alt=""></a>
 
     {% empty %}
