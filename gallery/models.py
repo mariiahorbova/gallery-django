@@ -72,17 +72,15 @@ class ArtPiece(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        if not self.firebase_image_url:
-            img = Im.open(self.picture.path)
-            img.save(self.picture.path)
 
-            storage.child("art_pieces/{0}".format(
-                self.picture.name
-            )).put(self.picture.path)
-            self.firebase_image_url = storage.child(
-                "art_pieces/{0}".format(self.picture.name)
-            ).get_url(None)
-            self.save()
+        storage.child("art_pieces/{0}".format(
+            self.picture.name
+        )).put(self.picture.path)
+        self.firebase_image_url = storage.child(
+            "art_pieces/{0}".format(self.picture.name)
+        ).get_url(None)
+
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("gallery:art-piece-detail", kwargs={"pk": self.pk})
