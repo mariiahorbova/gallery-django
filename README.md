@@ -67,3 +67,4 @@ python manage.py runserver
 
 ![image](https://github.com/mariiahorbova/gallery-mate/assets/44654425/1de72966-5835-414a-9b55-3d4fb034d978)
 
+![2023-08-20 00_53_56-Gallery Mate - Opera](https://github.com/mariiahorbova/gallery-mate/assets/44654425/e37aa81a-1c03-4cc2-ba3d-38636446817a)
