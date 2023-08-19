@@ -41,6 +41,7 @@ class ArtPiece(models.Model):
     description = models.TextField()
     picture = models.ImageField(upload_to="pictures")
     creation_date = models.DateField()
+    firebase_image_url = models.URLField(blank=True)
     author = models.ForeignKey(
         to=settings.AUTH_USER_MODEL,
         null=True,
@@ -69,14 +70,19 @@ class ArtPiece(models.Model):
     def __str__(self):
         return f"{self.title} ({self.author})"
 
-    def save(self):
-        super().save()
-        img = Im.open(self.picture.path)
-        img.save(self.picture.path)
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.firebase_image_url:
+            img = Im.open(self.picture.path)
+            img.save(self.picture.path)
 
-        storage.child("art_pieces/{0}".format(
-            self.picture.name
-        )).put(self.picture.path)
+            storage.child("art_pieces/{0}".format(
+                self.picture.name
+            )).put(self.picture.path)
+            self.firebase_image_url = storage.child(
+                "art_pieces/{0}".format(self.picture.name)
+            ).get_url(None)
+            self.save()
 
     def get_absolute_url(self):
         return reverse("gallery:art-piece-detail", kwargs={"pk": self.pk})

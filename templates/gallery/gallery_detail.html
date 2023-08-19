@@ -18,7 +18,9 @@
     {% for piece in gallery.art_pieces.all %}
         <hr>
         <p><strong>Title:</strong> {{ piece.title }}</p>
-        <p class="text-muted"><strong>Id:</strong> {{piece.id}}</p>
+        <a href="{% url 'gallery:art-piece-detail' pk=piece.id %}">
+          <img src="{{ piece.firebase_image_url }}" alt="">
+        </a>
 
     {% empty %}
       <p>No art pieces!</p>
