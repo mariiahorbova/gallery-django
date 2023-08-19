@@ -72,6 +72,8 @@ class ArtPiece(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+        img = Im.open(self.picture.path)
+        img.save(self.picture.path)
 
         storage.child("art_pieces/{0}".format(
             self.picture.name
