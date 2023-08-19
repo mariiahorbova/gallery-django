@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-
 from decouple import config
 import dj_database_url
 import dotenv
@@ -88,16 +87,20 @@ DATABASES["default"].update(db_from_env)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation."
+                "UserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "django.contrib.auth.password_validation."
+                "MinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation."
+                "CommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation."
+                "NumericPasswordValidator",
     },
 ]
 
@@ -124,3 +127,14 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+firebase_config = {
+    "apiKey": config("FIREBASE_API_KEY"),
+    "authDomain": config("FIREBASE_AUTH_DOMAIN"),
+    "projectId": config("FIREBASE_PROJECT_ID"),
+    "storageBucket": config("FIREBASE_STORAGE_BUCKET"),
+    "messagingSenderId": config("FIREBASE_MESSAGING_SENDER_ID"),
+    "appId": config("FIREBASE_APP_ID"),
+    "measurementId": config("FIREBASE_MEASUREMENT_ID"),
+    "databaseURL": config("DATABASE_URL")
+}

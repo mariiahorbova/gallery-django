@@ -4,6 +4,12 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
 from django_countries.fields import CountryField
+import pyrebase
+from gallery_mate.settings import firebase_config
+
+
+firebase = pyrebase.initialize_app(firebase_config)
+storage = firebase.storage()
 
 
 class Gallery(models.Model):
@@ -66,10 +72,11 @@ class ArtPiece(models.Model):
     def save(self):
         super().save()
         img = Im.open(self.picture.path)
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.picture.path)
+        img.save(self.picture.path)
+
+        storage.child("art_pieces/{0}".format(
+            self.picture.name
+        )).put(self.picture.path)
 
     def get_absolute_url(self):
         return reverse("gallery:art-piece-detail", kwargs={"pk": self.pk})
