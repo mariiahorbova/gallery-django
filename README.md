@@ -1,6 +1,6 @@
 <img src="gallery_1375157.png" alt="drawing" width="100" height="100"/>
 
-# Gallery Project for Mate Academy
+# Gallery Django Project
 Simple CRUD application for managing art pieces and authors.
 
 ## Check it out
@@ -17,7 +17,7 @@ password: qwfpgj78
 ## Setup
 1. Clone the project:
 ```
-git clone https://github.com/mariiahorbova/gallery-mate.git
+git clone https://github.com/mariiahorbova/gallery-django.git
 ```
 2. Navigate to the project directory:
 ```
